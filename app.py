@@ -14,7 +14,7 @@ def index():
 @app.route('/test')
 def test():
     title = 'れこめん'
-    item_datas = booth_scraper.scrape_booth('https://booth.pm/ja/items')
+    item_datas = booth_scraper.scrape('https://booth.pm/ja/items')
     message = item_datas
     return render_template('index.html', title=title, message=message)
 

@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def scrape_booth(url):
+def scrape(url):
     soup = get_soup(url)
     item_cards = soup.find_all('li', class_='item-card')
 
