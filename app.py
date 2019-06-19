@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 
 app = Flask(__name__,
-            static_folder="frontend/dist",
-            template_folder="frontend/dist")
+            static_folder="./frontend/dist/static",
+            template_folder="./frontend/dist")
 
 
 @app.route('/')
