@@ -80,17 +80,39 @@
         </a>
       </li>
     </ul>
+    <v-btn @click="getRandom">Toggle Button</v-btn>
+    <p>
+      {{ randomNumber }}
+    </p>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      randomNumber: 0
     }
-  }
+  },
+  methods: {
+    getRandom() {
+      this.randomNumber = this.getRandomFromBackend()
+    },
+    getRandomFromBackend() {
+      const path = `http://localhost:5000/api/getrandom`
+      axios.get(path)
+      .then(response => {
+        this.randomNumber = response.data.randomNumber
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }
+  },
 }
 </script>
 
