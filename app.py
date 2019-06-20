@@ -17,7 +17,17 @@ def index():
 @app.route('/api/getrandom')
 def get_random():
     response = {
-        'randomNumber': randint(1, 100)
+        'randomNumbers': [
+            {
+                'randomNumber': randint(1, 100)
+            },
+            {
+                'randomNumber': randint(1, 100)
+            },
+            {
+                'randomNumber': randint(1, 100)
+            },
+        ]
     }
     return jsonify(response)
 

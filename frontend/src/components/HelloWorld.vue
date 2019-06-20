@@ -81,10 +81,10 @@
       </li>
     </ul>
     <v-btn @click="getRandom">getRandomNumber</v-btn>
-    <p class="mb-4">
-      {{ randomNumber }}
+    <p v-for="randomNumber in randomNumbers" >
+      {{ randomNumber['randomNumber'] }}
     </p>
-    <v-btn @click="getTitle">getTitle</v-btn>
+    <v-btn @click="getTitle" class="mt-4">getTitle</v-btn>
     <p class="mb-4">
       {{ title }}
     </p>
@@ -100,7 +100,9 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      randomNumber: 0,
+      randomNumbers: [
+        {'randomNumber': 0}
+      ],
       title: 'ここにタイトルが入ります'
     }
   },
@@ -109,7 +111,7 @@ export default {
       const path = 'http://localhost:5000/api/getrandom';
       axios.get(path)
         .then(response => {
-          this.randomNumber = response.data.randomNumber
+          this.randomNumbers = response.data.randomNumbers
         })
         .catch(error => {
           console.log(error)
