@@ -80,11 +80,16 @@
         </a>
       </li>
     </ul>
-    <v-btn @click="getRandom">Toggle Button</v-btn>
-    <p>
+    <v-btn @click="getRandom">getRandomNumber</v-btn>
+    <p class="mb-4">
       {{ randomNumber }}
     </p>
+    <v-btn @click="getTitle">getTitle</v-btn>
+    <p class="mb-4">
+      {{ title }}
+    </p>
   </div>
+
 </template>
 
 <script>
@@ -95,19 +100,30 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      randomNumber: 0
+      randomNumber: 0,
+      title: 'ここにタイトルが入ります'
     }
   },
   methods: {
     getRandom() {
-      const path = `http://localhost:5000/api/getrandom`;
+      const path = 'http://localhost:5000/api/getrandom';
       axios.get(path)
-      .then(response => {
-        this.randomNumber = response.data.randomNumber
-      })
-      .catch(error => {
-        console.log(error)
-      })
+        .then(response => {
+          this.randomNumber = response.data.randomNumber
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    getTitle() {
+      const path = 'http://localhost:5000/api/gettitle';
+      axios.get(path)
+        .then(response => {
+          this.title = response.data.title
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
 }

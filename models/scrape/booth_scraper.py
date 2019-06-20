@@ -22,6 +22,16 @@ def scrape(url):
     return item_datas
 
 
+def scrape_title(url):
+    soup = get_soup(url)
+    item_card = soup.find('li', class_='item-card')
+
+    # for item_card in item_cards:  時が来たら
+    item_card = item_card
+    item_title = item_card.find('div', class_='item-card__title').text
+    return item_title
+
+
 def get_soup(url):
     reps = requests.get(url)
     html = reps.content

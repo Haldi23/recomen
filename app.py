@@ -22,5 +22,14 @@ def get_random():
     return jsonify(response)
 
 
+@app.route('/api/gettitle')
+def get_title():
+    title = booth_scraper.scrape_title('https://booth.pm/ja/items')
+    response = {
+        'title': title
+    }
+    return jsonify(response)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
