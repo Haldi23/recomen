@@ -65,3 +65,6 @@ typings/
 
 # idea files
 .idea/
+
+# pycache files
+__pycache__/

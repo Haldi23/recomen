@@ -42,4 +42,4 @@ def get_title():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
